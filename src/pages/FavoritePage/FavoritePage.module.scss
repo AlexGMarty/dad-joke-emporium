@@ -1,6 +1,6 @@
 @use "../../styles/variables" as *;
 
-.jokePage {
+.favoritePage {
   margin: 0 auto;
   max-width: 800px;
   padding: $spacing-xxxl $spacing-xl;
@@ -21,75 +21,52 @@
   padding: $spacing-xxxl;
 }
 
-.jokeText {
+.setup {
   color: $almost-black;
   font-size: $font-size-large;
+  font-weight: bold;
   line-height: 1.8;
   margin-bottom: $spacing-xxl;
   text-align: center;
 }
 
-.jokeId {
+.spoilerContainer {
+  font-weight: bold;
+  text-align: center;
+}
+
+.spoilerHint {
   color: $light-grey;
   font-size: $font-size-small;
-  margin-bottom: $spacing-xl;
-  text-align: center;
+  font-style: italic;
+  margin-bottom: $spacing-md;
 }
 
-.buttonContainer {
-  display: flex;
-  gap: $spacing-xl;
-  justify-content: center;
-}
-
-.button {
-  background-color: $dark-green;
-  border: none;
+.spoiler {
+  background-color: $almost-black;
   border-radius: $spacing-xs;
-  color: $white;
+  color: $almost-black;
   cursor: pointer;
+  display: inline-block;
   font-size: $font-size-base;
-  padding: $spacing-lg $spacing-xxl;
-  transition: background-color 0.3s ease;
+  line-height: 1.8;
+  padding: $spacing-lg $spacing-xl;
+  transition: all 0.3s ease;
+  user-select: none;
 
-  &:hover {
-    background-color: $darker-green;
+  &.revealed {
+    background-color: $lighter-green;
+    color: $almost-black;
+    cursor: default;
+
+    &:hover {
+      background-color: $lighter-green;
+    }
   }
-
-  &.copied {
-    background-color: $light-green;
-  }
-}
-
-.backButton {
-  background-color: $light-grey;
-  border: none;
-  border-radius: $spacing-xs;
-  color: $white;
-  cursor: pointer;
-  font-size: $font-size-base;
-  padding: $spacing-lg $spacing-xxl;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: $dark-grey;
-  }
-}
-
-.loading,
-.error {
-  font-size: $font-size-base;
-  padding: $spacing-xxxl;
-  text-align: center;
-}
-
-.error {
-  color: $dark-grey;
 }
 
 @media (max-width: $breakpoint-tablet) {
-  .jokePage {
+  .favoritePage {
     padding: $spacing-xxl $spacing-lg;
   }
 
@@ -97,13 +74,13 @@
     padding: $spacing-xxl;
   }
 
-  .jokeText {
+  .setup {
     font-size: $font-size-base;
   }
 }
 
 @media (max-width: $breakpoint-mobile) {
-  .jokePage {
+  .favoritePage {
     padding: $spacing-xl $spacing-md;
   }
 
@@ -113,9 +90,5 @@
 
   .jokeCard {
     padding: $spacing-xl;
-  }
-
-  .buttonContainer {
-    flex-direction: column;
   }
 }

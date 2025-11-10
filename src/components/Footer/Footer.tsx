@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { translations } from "../../translations";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
+  const t = translations.footer;
+  const tHeader = translations.header;
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -9,25 +13,31 @@ export const Footer = () => {
           <nav>
             <ul className={styles.links}>
               <li>
-                <Link to="/">Random Joke</Link>
+                <Link to="/">{tHeader.nav.randomJoke}</Link>
               </li>
               <li>
-                <Link to="/search">Search Jokes</Link>
+                <Link to="/search">{tHeader.nav.searchJokes}</Link>
+              </li>
+              <li>
+                <Link to="/favorite">{tHeader.nav.favoriteJoke}</Link>
+              </li>
+              <li>
+                <Link to="/about">{tHeader.nav.about}</Link>
               </li>
             </ul>
           </nav>
           <p className={styles.apiCredit}>
-            Jokes provided by{" "}
+            {t.apiCredit}{" "}
             <a
               href="https://icanhazdadjoke.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              icanhazdadjoke.com
+              {t.apiLink}
             </a>
           </p>
           <p className={styles.copyright}>
-            © {new Date().getFullYear()} Dad Joke Website
+            {t.copyright(new Date().getFullYear())}
           </p>
         </div>
       </div>

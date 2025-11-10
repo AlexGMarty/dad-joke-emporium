@@ -4,6 +4,8 @@ import { Footer } from "./components/Footer/Footer";
 import { RandomPage } from "./pages/RandomPage/RandomPage";
 import { SearchPage } from "./pages/SearchPage/SearchPage";
 import { JokePage } from "./pages/JokePage/JokePage";
+import { FavoritePage } from "./pages/FavoritePage/FavoritePage";
+import { AboutPage } from "./pages/AboutPage/AboutPage";
 import styles from "./App.module.scss";
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
           <Routes>
             <Route path="/" element={<RandomPage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/favorite" element={<FavoritePage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/joke/:id" element={<JokePage />} />
           </Routes>
         </main>

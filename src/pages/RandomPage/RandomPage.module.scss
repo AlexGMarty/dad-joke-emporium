@@ -1,99 +1,103 @@
 @use "../../styles/variables" as *;
 
 .randomPage {
-  max-width: 800px;
   margin: 0 auto;
+  max-width: 800px;
   padding: $spacing-xxxl $spacing-xl;
+}
 
-  .title {
-    font-size: $font-size-large;
-    color: $dark-green;
-    text-align: center;
-    margin-bottom: $spacing-xxl;
+.title {
+  color: $dark-green;
+  font-size: $font-size-large;
+  margin-bottom: $spacing-xxl;
+  text-align: center;
+}
+
+.jokeCard {
+  background-color: $white;
+  border-radius: $spacing-md;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-bottom: $spacing-xxl;
+  padding: $spacing-xxxl;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+}
+
+.jokeText {
+  color: $almost-black;
+  font-size: $font-size-base;
+  line-height: 1.8;
+  margin-bottom: $spacing-xl;
+  text-align: center;
+}
+
+.jokeId {
+  color: $light-grey;
+  font-size: $font-size-small;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: $dark-green;
+  border: none;
+  border-radius: $spacing-xs;
+  color: $white;
+  cursor: pointer;
+  font-size: $font-size-base;
+  padding: $spacing-lg $spacing-xxl;
+  transition: background-color 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: $darker-green;
+  }
+
+  &:disabled {
+    background-color: $light-grey;
+    cursor: not-allowed;
+  }
+}
+
+.loading,
+.error {
+  font-size: $font-size-base;
+  padding: $spacing-xxxl;
+  text-align: center;
+}
+
+.error {
+  color: $dark-grey;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .randomPage {
+    padding: $spacing-xxl $spacing-lg;
   }
 
   .jokeCard {
-    background-color: $white;
-    border-radius: $spacing-md;
-    padding: $spacing-xxxl;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: $spacing-xxl;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .jokeText {
-      font-size: $font-size-base;
-      line-height: 1.8;
-      color: $almost-black;
-      margin-bottom: $spacing-xl;
-      text-align: center;
-    }
-
-    .jokeId {
-      font-size: $font-size-small;
-      color: $light-grey;
-      text-align: center;
-    }
+    padding: $spacing-xxl;
   }
+}
 
-  .buttonContainer {
-    display: flex;
-    justify-content: center;
-  }
-
-  .button {
-    background-color: $dark-green;
-    color: $white;
-    border: none;
-    padding: $spacing-lg $spacing-xxl;
-    font-size: $font-size-base;
-    border-radius: $spacing-xs;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover:not(:disabled) {
-      background-color: $darker-green;
-    }
-
-    &:disabled {
-      background-color: $light-grey;
-      cursor: not-allowed;
-    }
-  }
-
-  .loading,
-  .error {
-    text-align: center;
-    padding: $spacing-xxxl;
-    font-size: $font-size-base;
-  }
-
-  .error {
-    color: $dark-grey;
-  }
-
-  @media (max-width: $breakpoint-tablet) {
-    padding: $spacing-xxl $spacing-lg;
-
-    .jokeCard {
-      padding: $spacing-xxl;
-    }
-  }
-
-  @media (max-width: $breakpoint-mobile) {
+@media (max-width: $breakpoint-mobile) {
+  .randomPage {
     padding: $spacing-xl $spacing-md;
+  }
 
-    .title {
-      font-size: $font-size-base;
-    }
+  .title {
+    font-size: $font-size-base;
+  }
 
-    .jokeCard {
-      padding: $spacing-xl;
-    }
+  .jokeCard {
+    padding: $spacing-xl;
   }
 }

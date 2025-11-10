@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useRandomJoke } from "../../hooks/useRandomJoke";
+import { translations } from "../../translations";
 import styles from "./RandomPage.module.scss";
 
 export const RandomPage = () => {
   const { joke, loading, error, refetch } = useRandomJoke();
   const navigate = useNavigate();
+  const t = translations.randomPage;
 
   const handleJokeClick = () => {
     if (joke) {
@@ -14,24 +16,22 @@ export const RandomPage = () => {
 
   return (
     <div className={styles.randomPage}>
-      <h1 className={styles.title}>Random Dad Joke</h1>
+      <h1 className={styles.title}>{t.title}</h1>
 
-      {loading && (
-        <div className={styles.loading}>Loading a hilarious joke...</div>
-      )}
+      {loading && <div className={styles.loading}>{t.loading}</div>}
 
-      {error && <div className={styles.error}>Error: {error}</div>}
+      {error && <div className={styles.error}>{t.error(error)}</div>}
 
       {joke && !loading && (
         <div className={styles.jokeCard} onClick={handleJokeClick}>
           <p className={styles.jokeText}>{joke.joke}</p>
-          <p className={styles.jokeId}>ID: {joke.id}</p>
+          <p className={styles.jokeId}>{t.jokeId(joke.id)}</p>
         </div>
       )}
 
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={refetch} disabled={loading}>
-          Get Another Joke
+          {t.buttonText}
         </button>
       </div>
     </div>

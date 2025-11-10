@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { translations } from "../../translations";
 import styles from "./Header.module.scss";
 
 export const Header = () => {
+  const t = translations.header;
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <NavLink to="/" className={styles.logo}>
-          🤣 Dad Jokes
+          {t.logoText}
         </NavLink>
         <nav>
           <ul className={styles.nav}>
@@ -15,7 +18,7 @@ export const Header = () => {
                 to="/"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                Random Joke
+                {t.nav.randomJoke}
               </NavLink>
             </li>
             <li>
@@ -23,7 +26,23 @@ export const Header = () => {
                 to="/search"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                Search Jokes
+                {t.nav.searchJokes}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/favorite"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                {t.nav.favoriteJoke}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                {t.nav.about}
               </NavLink>
             </li>
           </ul>

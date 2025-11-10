@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchJokes } from "../../hooks/useSearchJokes";
+import { translations } from "../../translations";
 import styles from "./SearchPage.module.scss";
 
 export const SearchPage = () => {
@@ -8,6 +9,7 @@ export const SearchPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, loading, error, search } = useSearchJokes();
   const navigate = useNavigate();
+  const t = translations.searchPage;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -39,13 +41,13 @@ export const SearchPage = () => {
 
   return (
     <div className={styles.searchPage}>
-      <h1 className={styles.title}>Search Dad Jokes</h1>
+      <h1 className={styles.title}>{t.title}</h1>
 
       <form className={styles.searchForm} onSubmit={handleSubmit}>
         <input
           type="text"
           className={styles.searchInput}
-          placeholder="Search for jokes..."
+          placeholder={t.searchPlaceholder}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -54,19 +56,18 @@ export const SearchPage = () => {
           className={styles.searchButton}
           disabled={loading || !searchTerm.trim()}
         >
-          Search
+          {t.searchButton}
         </button>
       </form>
 
-      {loading && <div className={styles.loading}>Searching for jokes...</div>}
+      {loading && <div className={styles.loading}>{t.loading}</div>}
 
-      {error && <div className={styles.error}>Error: {error}</div>}
+      {error && <div className={styles.error}>{t.error(error)}</div>}
 
       {data && !loading && (
         <div className={styles.results}>
           <p className={styles.resultInfo}>
-            Found {data.total_jokes} joke{data.total_jokes !== 1 ? "s" : ""} for
-            "{data.search_term}"
+            {t.resultInfo(data.total_jokes, data.search_term)}
           </p>
 
           {data.results.length > 0 ? (
@@ -79,7 +80,7 @@ export const SearchPage = () => {
                     onClick={() => handleJokeClick(joke.id)}
                   >
                     <p className={styles.jokeText}>{joke.joke}</p>
-                    <p className={styles.jokeId}>ID: {joke.id}</p>
+                    <p className={styles.jokeId}>{t.jokeId(joke.id)}</p>
                   </div>
                 ))}
               </div>
@@ -91,25 +92,24 @@ export const SearchPage = () => {
                     onClick={handlePreviousPage}
                     disabled={currentPage === 1}
                   >
-                    Previous
+                    {t.pagination.previous}
                   </button>
                   <span className={styles.pageInfo}>
-                    Page {currentPage} of {data.total_pages}
+                    {t.pagination.pageInfo(currentPage, data.total_pages)}
                   </span>
                   <button
                     className={styles.pageButton}
                     onClick={handleNextPage}
                     disabled={currentPage === data.total_pages}
                   >
-                    Next
+                    {t.pagination.next}
                   </button>
                 </div>
               )}
             </>
           ) : (
             <div className={styles.noResults}>
-              No jokes found for "{data.search_term}". Try a different search
-              term!
+              {t.noResults(data.search_term)}
             </div>
           )}
         </div>

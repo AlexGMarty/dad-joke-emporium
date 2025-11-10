@@ -1,0 +1,47 @@
+@use "../../styles/variables" as *;
+
+.aboutPage {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: $spacing-xxxl $spacing-xl;
+}
+
+.title {
+  color: $dark-green;
+  font-size: $font-size-large;
+  margin-bottom: $spacing-xxl;
+  text-align: center;
+}
+
+.content {
+  background-color: $white;
+  border-radius: $spacing-md;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: $almost-black;
+  line-height: 1.8;
+  padding: $spacing-xxxl;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .aboutPage {
+    padding: $spacing-xxl $spacing-lg;
+  }
+
+  .content {
+    padding: $spacing-xxl;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .aboutPage {
+    padding: $spacing-xl $spacing-md;
+  }
+
+  .title {
+    font-size: $font-size-base;
+  }
+
+  .content {
+    padding: $spacing-xl;
+  }
+}
