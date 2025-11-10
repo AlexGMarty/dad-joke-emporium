@@ -1,0 +1,117 @@
+@use "../../styles/variables" as *;
+
+.jokePage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-xxxl $spacing-xl;
+
+  .title {
+    font-size: $font-size-large;
+    color: $dark-green;
+    text-align: center;
+    margin-bottom: $spacing-xxl;
+  }
+
+  .jokeCard {
+    background-color: $white;
+    border-radius: $spacing-md;
+    padding: $spacing-xxxl;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: $spacing-xxl;
+
+    .jokeText {
+      font-size: $font-size-large;
+      line-height: 1.8;
+      color: $almost-black;
+      margin-bottom: $spacing-xxl;
+      text-align: center;
+    }
+
+    .jokeId {
+      font-size: $font-size-small;
+      color: $light-grey;
+      text-align: center;
+      margin-bottom: $spacing-xl;
+    }
+
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      gap: $spacing-xl;
+
+      .button {
+        background-color: $dark-green;
+        color: $white;
+        border: none;
+        padding: $spacing-lg $spacing-xxl;
+        font-size: $font-size-base;
+        border-radius: $spacing-xs;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $darker-green;
+        }
+
+        &.copied {
+          background-color: $light-green;
+        }
+      }
+
+      .backButton {
+        background-color: $light-grey;
+        color: $white;
+        border: none;
+        padding: $spacing-lg $spacing-xxl;
+        font-size: $font-size-base;
+        border-radius: $spacing-xs;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $dark-grey;
+        }
+      }
+    }
+  }
+
+  .loading,
+  .error {
+    text-align: center;
+    padding: $spacing-xxxl;
+    font-size: $font-size-base;
+  }
+
+  .error {
+    color: $dark-grey;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: $spacing-xxl $spacing-lg;
+
+    .jokeCard {
+      padding: $spacing-xxl;
+
+      .jokeText {
+        font-size: $font-size-base;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: $spacing-xl $spacing-md;
+
+    .title {
+      font-size: $font-size-base;
+    }
+
+    .jokeCard {
+      padding: $spacing-xl;
+
+      .buttonContainer {
+        flex-direction: column;
+      }
+    }
+  }
+}

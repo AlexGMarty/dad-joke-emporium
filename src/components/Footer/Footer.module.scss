@@ -1,0 +1,64 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  background-color: $dark-grey;
+  color: $almost-white;
+  padding: $spacing-xxl;
+  margin-top: auto;
+  text-align: center;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    align-items: center;
+  }
+
+  .links {
+    display: flex;
+    gap: $spacing-xxl;
+    list-style: none;
+
+    a {
+      color: $almost-white;
+      text-decoration: none;
+      font-size: $font-size-small;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $light-green;
+      }
+    }
+  }
+
+  .copyright {
+    font-size: $font-size-small;
+    color: $light-grey;
+  }
+
+  .apiCredit {
+    font-size: $font-size-small;
+    color: $light-grey;
+
+    a {
+      color: $light-green;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    .links {
+      flex-direction: column;
+      gap: $spacing-lg;
+    }
+  }
+}
