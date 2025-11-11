@@ -10,7 +10,7 @@ import styles from "./App.module.scss";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/dad-joke-emporium">
       <div className={styles.app}>
         <Header />
         <main className={styles.main}>
