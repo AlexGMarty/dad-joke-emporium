@@ -16,6 +16,28 @@ export const AboutPage = () => {
         </p>
 
         <p>
+          <strong>See the code here: </strong>
+          <a
+            href="https://github.com/AlexGMarty/dad-joke-emporium"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github.com/AlexGMarty/dad-joke-emporium
+          </a>
+        </p>
+
+        <p>
+          <strong>Like what you see? Check out my resume: </strong>
+          <a
+            href="https://alexgmarty.github.io/Resume/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            alexgmarty.github.io/Resume/
+          </a>
+        </p>
+
+        <p>
           All development was done with <strong>responsiveness</strong> in mind,
           ensuring a clean layout on mobile, tablet, and desktop. The navigation
           automatically adjusts its layout for smaller screens, and all content
