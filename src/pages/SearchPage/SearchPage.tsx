@@ -1,21 +1,32 @@
-import { useState, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, FormEvent, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSearchJokes } from "../../hooks/useSearchJokes";
 import { translations } from "../../translations";
 import styles from "./SearchPage.module.scss";
 
 export const SearchPage = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("term") || "");
   const { data, loading, error, search } = useSearchJokes();
   const navigate = useNavigate();
   const t = translations.searchPage;
+  const currentSearchPage = parseInt(searchParams.get("page") || "1", 10);
+
+  // Restore search on mount or when URL params change
+  useEffect(() => {
+    const term = searchParams.get("term");
+    const page = parseInt(searchParams.get("page") || "1", 10);
+
+    if (term) {
+      setSearchTerm(term);
+      search(term, page);
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      setCurrentPage(1);
-      search(searchTerm, 1);
+      setSearchParams({ term: searchTerm.trim(), page: "1" });
     }
   };
 
@@ -24,18 +35,16 @@ export const SearchPage = () => {
   };
 
   const handlePreviousPage = () => {
-    if (data && currentPage > 1) {
-      const newPage = currentPage - 1;
-      setCurrentPage(newPage);
-      search(searchTerm, newPage);
+    if (data && currentSearchPage > 1) {
+      const newPage = currentSearchPage - 1;
+      setSearchParams({ term: searchTerm, page: newPage.toString() });
     }
   };
 
   const handleNextPage = () => {
-    if (data && currentPage < data.total_pages) {
-      const newPage = currentPage + 1;
-      setCurrentPage(newPage);
-      search(searchTerm, newPage);
+    if (data && currentSearchPage < data.total_pages) {
+      const newPage = currentSearchPage + 1;
+      setSearchParams({ term: searchTerm, page: newPage.toString() });
     }
   };
 
@@ -69,6 +78,11 @@ export const SearchPage = () => {
           <p className={styles.resultInfo}>
             {t.resultInfo(data.total_jokes, data.search_term)}
           </p>
+          {data.total_pages > 1 && (
+            <p className={styles.resultInfo}>
+              {t.pagination.pageInfo(currentSearchPage, data.total_pages)}
+            </p>
+          )}
 
           {data.results.length > 0 ? (
             <>
@@ -90,17 +104,17 @@ export const SearchPage = () => {
                   <button
                     className={styles.pageButton}
                     onClick={handlePreviousPage}
-                    disabled={currentPage === 1}
+                    disabled={currentSearchPage === 1}
                   >
                     {t.pagination.previous}
                   </button>
                   <span className={styles.pageInfo}>
-                    {t.pagination.pageInfo(currentPage, data.total_pages)}
+                    {t.pagination.pageInfo(currentSearchPage, data.total_pages)}
                   </span>
                   <button
                     className={styles.pageButton}
                     onClick={handleNextPage}
-                    disabled={currentPage === data.total_pages}
+                    disabled={currentSearchPage === data.total_pages}
                   >
                     {t.pagination.next}
                   </button>

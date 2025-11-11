@@ -22,6 +22,14 @@
   padding: $spacing-xxxl;
 }
 
+p:not(:last-child) {
+  margin-bottom: $spacing-xxl;
+}
+
+code {
+  background-color: $almost-white;
+}
+
 @media (max-width: $breakpoint-tablet) {
   .aboutPage {
     padding: $spacing-xxl $spacing-lg;
