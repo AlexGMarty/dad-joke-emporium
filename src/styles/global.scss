@@ -1,0 +1,21 @@
+@use "./variables" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $almost-white;
+  color: $almost-black;
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: 1.6;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

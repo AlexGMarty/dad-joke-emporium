@@ -1,0 +1,64 @@
+@use "../../styles/variables" as *;
+
+.header {
+  background-color: $dark-green;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: $white;
+  padding: $spacing-xl $spacing-xxl;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xl;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.logo {
+  color: $white;
+  font-size: $font-size-large;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    color: $lighter-green;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: $spacing-xxl;
+  list-style: none;
+
+  a {
+    color: $white;
+    font-size: $font-size-base;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $lighter-green;
+    }
+
+    &.active {
+      color: $light-green;
+      font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .container {
+    flex-direction: column;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: $spacing-sm;
+    text-align: center;
+    width: 100%;
+  }
+}
