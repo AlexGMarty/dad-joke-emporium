@@ -59,6 +59,16 @@ export const AboutPage = () => {
           for failed requests. All API calls are abstracted into a service
           layer, separating data fetching concerns from component logic.
         </p>
+
+        <p>
+          Considerations for future improvements:
+          <ul>
+            <li>Unit and integration testing</li>
+            <li>Improved accessibility features</li>
+            <li>Dark Mode support</li>
+            <li>Favorites system via localStorage</li>
+          </ul>
+        </p>
       </div>
     </div>
   );

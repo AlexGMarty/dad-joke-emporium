@@ -67,6 +67,6 @@ export const translations = {
 
   // About Page
   aboutPage: {
-    title: "About Alex's Dad Joke Emporium™",
+    title: "About This Project",
   },
 } as const;

@@ -2,7 +2,7 @@
 
 .aboutPage {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: $content-max-width;
   padding: $spacing-xxxl $spacing-xl;
 }
 
@@ -28,6 +28,14 @@ p:not(:last-child) {
 
 code {
   background-color: $almost-white;
+}
+
+a {
+  color: $dark-green;
+}
+
+li {
+  margin-left: $spacing-xxxl;
 }
 
 @media (max-width: $breakpoint-tablet) {
