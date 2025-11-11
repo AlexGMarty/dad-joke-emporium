@@ -2,7 +2,33 @@
 
 Look, it's me, Alex, messing with your README.
 
-Obviously, all the code is here for the site I made.
+Thank you for giving me the opportunity to work on this project! I had a lot of fun, as will hopefully be obvious as you poke around the site. I think I spent about 4 hours total making it.
+
+Obviously, all the code is right here. Since I don't have permissions to publish via GitHub Pages (for obvious security reasons), you'll have to pull down the repo and run it yourself following the instructions below.
+
+## Setup Instructions
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/onX-Hiring/interview-proj-web_Alex-Marty.git
+   cd interview-proj-web_Alex-Marty
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser:**
+   Navigate to the URL shown in the terminal (typically `http://localhost:5173`)
 
 ---
 
