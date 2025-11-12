@@ -24,8 +24,6 @@
   display: flex;
   gap: $spacing-xxl;
   list-style: none;
-  margin: 0;
-  padding: 0;
 
   a {
     color: $almost-white;
@@ -36,6 +34,10 @@
     &:hover {
       color: $light-green;
     }
+  }
+
+  li {
+    margin: 0;
   }
 }
 
